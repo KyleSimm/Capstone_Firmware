@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=ECEN403_Firmware
+PROJECTNAME=CapstoneFirmware.X
 
 # Active Configuration
 DEFAULTCONF=default

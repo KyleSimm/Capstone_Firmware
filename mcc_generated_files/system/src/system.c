@@ -1,3 +1,14 @@
+/**
+ * MAIN Generated Driver Header File
+ * 
+ * @file      system.c
+ *            
+ * @ingroup   systemdriver
+ *            
+ * @brief     This is the generated driver header file for the System driver
+ *            
+ * @skipline  Device : dsPIC33CK1024MP710
+*/
 /*
 © [2025] Microchip Technology Inc. and its subsidiaries.
 
@@ -18,17 +29,34 @@
     EXCEED AMOUNT OF FEES, IF ANY, YOU PAID DIRECTLY TO MICROCHIP FOR 
     THIS SOFTWARE.
 */
-#include "mcc_generated_files/system/system.h"
 
-/*
-    Main application
-*/
+#include "../system.h"
+#include "../system_types.h"
+#include "../clock.h"
+#include "../pins.h"
+#include "../dmt.h"
+#include "../../peripheral/pwm.h"
+#include "../../pwm/sccp1.h"
+#include "../../pwm/sccp2.h"
+#include "../../pwm/sccp3.h"
+#include "../../timer/tmr1.h"
+#include "../interrupt.h"
 
-int main(void)
+
+void SYSTEM_Initialize(void)
 {
-    SYSTEM_Initialize();
-
-    while(1)
-    {
-    }    
+    CLOCK_Initialize();
+    PINS_Initialize();
+    DMT_Initialize();
+    PWM_Initialize();
+    SCCP1_PWM_Initialize();
+    SCCP2_PWM_Initialize();
+    SCCP3_PWM_Initialize();
+    TMR1_Initialize();
+    INTERRUPT_GlobalEnable();
+    INTERRUPT_Initialize();
 }
+
+/**
+ End of File
+*/

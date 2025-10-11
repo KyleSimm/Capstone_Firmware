@@ -1,3 +1,19 @@
+/**
+ * INTERRUPT Generated Driver Header File 
+ * 
+ * @file      interrupt_types.h
+ *            
+ * @defgroup  interruptdriver
+ *            
+ * @brief     This is the generated driver types header file for the INTERRUPT driver
+ *            
+ * @skipline @version   Firmware Driver Version 1.1.2
+ *
+ * @skipline @version   PLIB Version 1.4.1
+ *            
+ * @skipline  Device : dsPIC33CK1024MP710
+*/
+
 /*
 © [2025] Microchip Technology Inc. and its subsidiaries.
 
@@ -18,17 +34,27 @@
     EXCEED AMOUNT OF FEES, IF ANY, YOU PAID DIRECTLY TO MICROCHIP FOR 
     THIS SOFTWARE.
 */
-#include "mcc_generated_files/system/system.h"
 
-/*
-    Main application
+#ifndef INTERRUPT_TYPES_H
+#define INTERRUPT_TYPES_H
+
+/**
+ * @ingroup  interruptdriver
+ * @enum     interrupt_types.h
+ * @brief    Defines the interrupt priority values.
 */
 
-int main(void)
+enum INTERRUPT_PRIORITY
 {
-    SYSTEM_Initialize();
+	INTERRUPT_PRIORITY_1 = 1,
+	INTERRUPT_PRIORITY_2 = 2,
+	INTERRUPT_PRIORITY_3 = 3,
+	INTERRUPT_PRIORITY_4 = 4,
+	INTERRUPT_PRIORITY_5 = 5,
+	INTERRUPT_PRIORITY_6 = 6,
+	INTERRUPT_PRIORITY_7 = 7,
+	INTERRUPT_MAX_PRIORITY = 7
+};
 
-    while(1)
-    {
-    }    
-}
+#endif
+

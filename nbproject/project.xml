@@ -3,10 +3,10 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>Capstone Firmware Main</name>
-            <creation-uuid>4bae538e-3347-47cb-bc83-5db47808a280</creation-uuid>
+            <name>CapstoneFirmware</name>
+            <creation-uuid>cb58e532-945d-4323-9351-ce3f644b0111</creation-uuid>
             <make-project-type>0</make-project-type>
-            <sourceEncoding>UTF-8</sourceEncoding>
+            <sourceEncoding>ISO-8859-1</sourceEncoding>
             <make-dep-projects/>
             <sourceRootList/>
             <confList>

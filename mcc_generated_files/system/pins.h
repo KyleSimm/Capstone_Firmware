@@ -1,3 +1,20 @@
+/**
+ * PINS Generated Driver Header File 
+ * 
+ * @file      pins.h
+ *            
+ * @defgroup  pinsdriver Pins Driver
+ *            
+ * @brief     The Pin Driver directs the operation and function of 
+ *            the selected device pins using dsPIC MCUs.
+ *
+ * @skipline @version   Firmware Driver Version 1.0.2
+ *
+ * @skipline @version   PLIB Version 1.4.0
+ *
+ * @skipline  Device : dsPIC33CK1024MP710
+*/
+
 /*
 © [2025] Microchip Technology Inc. and its subsidiaries.
 
@@ -18,17 +35,22 @@
     EXCEED AMOUNT OF FEES, IF ANY, YOU PAID DIRECTLY TO MICROCHIP FOR 
     THIS SOFTWARE.
 */
-#include "mcc_generated_files/system/system.h"
 
-/*
-    Main application
-*/
+#ifndef PINS_H
+#define PINS_H
+// Section: Includes
+#include <xc.h>
 
-int main(void)
-{
-    SYSTEM_Initialize();
+// Section: Device Pin Macros
 
-    while(1)
-    {
-    }    
-}
+/**
+ * @ingroup  pinsdriver
+ * @brief    Initializes the PINS module
+ * @param    none
+ * @return   none  
+ */
+void PINS_Initialize(void);
+
+
+
+#endif

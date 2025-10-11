@@ -1,3 +1,26 @@
+/**
+  PWM Generated Driver Header File
+ 
+  @Company
+    Microchip Technology Inc.
+ 
+  @File Name
+    pwm.h
+ 
+  @Summary
+    This is the generated driver header file for the PWM driver using CCL
+ 
+  @Description
+    This file provides APIs declarations for PWM driver.
+    Generation Information :
+        Product Revision  :  CCL -
+        Driver Revision   :  0.1.0
+        Device            :  dsPIC33CK1024MP710
+*/
+
+#ifndef PWM_H
+#define PWM_H
+
 /*
 © [2025] Microchip Technology Inc. and its subsidiaries.
 
@@ -18,17 +41,29 @@
     EXCEED AMOUNT OF FEES, IF ANY, YOU PAID DIRECTLY TO MICROCHIP FOR 
     THIS SOFTWARE.
 */
-#include "mcc_generated_files/system/system.h"
 
-/*
-    Main application
+/**
+  @Description
+    Initializes PWM module, using the given initialization data. 
+ 
+  @Preconditions
+    None.
+
+  @Param
+    None.
+
+  @Returns
+    None.
+
+  @Example
+    <code>
+      PWM_Initialize();
+    </code>
 */
+void PWM_Initialize (void);
 
-int main(void)
-{
-    SYSTEM_Initialize();
+#endif //PWM_H
 
-    while(1)
-    {
-    }    
-}
+/**
+ End of File
+*/

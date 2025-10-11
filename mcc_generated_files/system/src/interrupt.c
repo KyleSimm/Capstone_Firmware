@@ -1,3 +1,19 @@
+/**
+ * INTERRUPT Generated Driver Source File 
+ * 
+ * @file      interrupt.c
+ *            
+ * @ingroup   interruptdriver
+ *            
+ * @brief     This is the generated driver source file for INTERRUPT driver
+ *            
+ * @skipline @version   Firmware Driver Version 1.1.2
+ *
+ * @skipline @version   PLIB Version 1.4.1
+ *            
+ * @skipline  Device : dsPIC33CK1024MP710
+*/
+
 /*
 © [2025] Microchip Technology Inc. and its subsidiaries.
 
@@ -18,17 +34,28 @@
     EXCEED AMOUNT OF FEES, IF ANY, YOU PAID DIRECTLY TO MICROCHIP FOR 
     THIS SOFTWARE.
 */
-#include "mcc_generated_files/system/system.h"
 
-/*
-    Main application
-*/
+// Section: Includes
+#include <xc.h>
+#include "../interrupt.h"
 
-int main(void)
+// Section: Driver Interface Function Definitions
+
+void INTERRUPT_Initialize(void)
 {
-    SYSTEM_Initialize();
+    // T1: Timer 1
+    // Priority: 1
+    IPC0bits.T1IP = 1;
+    
+    // DMT: Dead Man Timer
+    // Priority: 1
+    IPC11bits.DMTIP = 1;
+    
+}
 
-    while(1)
-    {
-    }    
+void INTERRUPT_Deinitialize(void)
+{
+    //POR default value of priority
+    IPC0bits.T1IP = 4;
+    IPC11bits.DMTIP = 4;
 }
