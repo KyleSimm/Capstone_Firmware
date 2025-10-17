@@ -1,5 +1,5 @@
 /*
-© [2025] Microchip Technology Inc. and its subsidiaries.
+ï¿½ [2025] Microchip Technology Inc. and its subsidiaries.
 
     Subject to your compliance with these terms, you may use Microchip 
     software and any derivatives exclusively with Microchip products. 
@@ -20,15 +20,34 @@
 */
 #include "mcc_generated_files/system/system.h"
 
+//Custom Classes
+
 /*
     Main application
 */
 
+#include "xc.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+//Custom Files
+
+#include "vfdControlLoop.h"
+
 int main(void)
 {
     SYSTEM_Initialize();
-
+ 
+    vfd_Init();
+    
     while(1)
     {
-    }    
+        //Check SPI Connection
+        
+        
+        //Update Drivers
+        vfd_Update();
+    }
+    return 0;    
 }

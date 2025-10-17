@@ -7,15 +7,15 @@
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"
                      projectFiles="true">
-        <logicalFolder name="peripheral" displayName="peripheral" projectFiles="true">
-          <itemPath>mcc_generated_files/peripheral/pwm.h</itemPath>
+        <logicalFolder name="pwm_hs" displayName="pwm_hs" projectFiles="true">
+          <itemPath>mcc_generated_files/pwm_hs/pwm_hs_types.h</itemPath>
+          <itemPath>mcc_generated_files/pwm_hs/pwm_features.h</itemPath>
+          <itemPath>mcc_generated_files/pwm_hs/pwm_hs_interface.h</itemPath>
+          <itemPath>mcc_generated_files/pwm_hs/pwm.h</itemPath>
         </logicalFolder>
-        <logicalFolder name="pwm" displayName="pwm" projectFiles="true">
-          <itemPath>mcc_generated_files/pwm/pwm_interface.h</itemPath>
-          <itemPath>mcc_generated_files/pwm/sccp1.h</itemPath>
-          <itemPath>mcc_generated_files/pwm/pwm_types.h</itemPath>
-          <itemPath>mcc_generated_files/pwm/sccp2.h</itemPath>
-          <itemPath>mcc_generated_files/pwm/sccp3.h</itemPath>
+        <logicalFolder name="spi_client" displayName="spi_client" projectFiles="true">
+          <itemPath>mcc_generated_files/spi_client/spi1.h</itemPath>
+          <itemPath>mcc_generated_files/spi_client/spi_client_interface.h</itemPath>
         </logicalFolder>
         <logicalFolder name="system" displayName="system" projectFiles="true">
           <itemPath>mcc_generated_files/system/clock.h</itemPath>
@@ -29,10 +29,6 @@
           <itemPath>mcc_generated_files/system/reset.h</itemPath>
           <itemPath>mcc_generated_files/system/reset_types.h</itemPath>
           <itemPath>mcc_generated_files/system/dmt.h</itemPath>
-        </logicalFolder>
-        <logicalFolder name="timer" displayName="timer" projectFiles="true">
-          <itemPath>mcc_generated_files/timer/tmr1.h</itemPath>
-          <itemPath>mcc_generated_files/timer/timer_interface.h</itemPath>
         </logicalFolder>
       </logicalFolder>
     </logicalFolder>
@@ -49,19 +45,35 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <logicalFolder name="f1" displayName="lib" projectFiles="true">
+        <itemPath>pwmlookup.c</itemPath>
+        <itemPath>vfdControlLoop.c</itemPath>
+        <itemPath>vfdControlLoop.h</itemPath>
+        <itemPath>pwmLookup.h</itemPath>
+        <itemPath>pwm_driver.c</itemPath>
+        <itemPath>pwm_driver.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"
                      projectFiles="true">
-        <logicalFolder name="peripheral" displayName="peripheral" projectFiles="true">
-          <logicalFolder name="src" displayName="src" projectFiles="true">
-            <itemPath>mcc_generated_files/peripheral/src/pwm.c</itemPath>
+        <logicalFolder name="examples" displayName="examples" projectFiles="true">
+          <logicalFolder name="pwm_example" displayName="pwm_example" projectFiles="true">
+            <itemPath>mcc_generated_files/examples/pwm_example/pwm_example.c</itemPath>
+          </logicalFolder>
+          <logicalFolder name="timer_example"
+                         displayName="timer_example"
+                         projectFiles="true">
+            <itemPath>mcc_generated_files/examples/timer_example/timer_example.c</itemPath>
           </logicalFolder>
         </logicalFolder>
-        <logicalFolder name="pwm" displayName="pwm" projectFiles="true">
+        <logicalFolder name="pwm_hs" displayName="pwm_hs" projectFiles="true">
           <logicalFolder name="src" displayName="src" projectFiles="true">
-            <itemPath>mcc_generated_files/pwm/src/sccp1.c</itemPath>
-            <itemPath>mcc_generated_files/pwm/src/sccp2.c</itemPath>
-            <itemPath>mcc_generated_files/pwm/src/sccp3.c</itemPath>
+            <itemPath>mcc_generated_files/pwm_hs/src/pwm.c</itemPath>
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="spi_client" displayName="spi_client" projectFiles="true">
+          <logicalFolder name="src" displayName="src" projectFiles="true">
+            <itemPath>mcc_generated_files/spi_client/src/spi1.c</itemPath>
           </logicalFolder>
         </logicalFolder>
         <logicalFolder name="system" displayName="system" projectFiles="true">
@@ -78,15 +90,13 @@
             <itemPath>mcc_generated_files/system/src/dmt_asm.s</itemPath>
           </logicalFolder>
         </logicalFolder>
-        <logicalFolder name="timer" displayName="timer" projectFiles="true">
-          <logicalFolder name="src" displayName="src" projectFiles="true">
-            <itemPath>mcc_generated_files/timer/src/tmr1.c</itemPath>
-          </logicalFolder>
-        </logicalFolder>
       </logicalFolder>
       <itemPath>main.c</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="default" type="2">

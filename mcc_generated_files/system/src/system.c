@@ -35,11 +35,8 @@
 #include "../clock.h"
 #include "../pins.h"
 #include "../dmt.h"
-#include "../../peripheral/pwm.h"
-#include "../../pwm/sccp1.h"
-#include "../../pwm/sccp2.h"
-#include "../../pwm/sccp3.h"
-#include "../../timer/tmr1.h"
+#include "../../pwm_hs/pwm.h"
+#include "../../spi_client/spi1.h"
 #include "../interrupt.h"
 
 
@@ -49,10 +46,7 @@ void SYSTEM_Initialize(void)
     PINS_Initialize();
     DMT_Initialize();
     PWM_Initialize();
-    SCCP1_PWM_Initialize();
-    SCCP2_PWM_Initialize();
-    SCCP3_PWM_Initialize();
-    TMR1_Initialize();
+    SPI1_Initialize();
     INTERRUPT_GlobalEnable();
     INTERRUPT_Initialize();
 }
