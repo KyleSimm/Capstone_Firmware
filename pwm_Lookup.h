@@ -14,19 +14,20 @@ extern "C" {
 
 #include <stdint.h>
 
-#define table_Size 256
-#define pwm_Max 2000
+#define table_Size 512
+#define pwm_Max 249
 
 typedef enum { FORWARD = 1, REVERSE = -1 } Direction;
 
 typedef struct {
-    uint16_t index;
+    float index;
     float step_size;
     Direction direction;
 } PWM_State;
 
+void init_sine_table(void);
 uint16_t pwm_NextVal(PWM_State *state);
-void pwm_UpdateStep(PWM_State *state, float frequency);
+void pwm_UpdateFreq(PWM_State *state, float frequency);
 
 
 

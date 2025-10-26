@@ -1,30 +1,38 @@
-/*
- Set Physical Pins to what is Needed
- */
-
-#include <xc.h>
 #include "pwm_driver.h"
-//Sets Duty Cycle for PWM Channel
+#include <xc.h>
+#include <stdint.h>
 
-void setPWM_channel(char Phase, uint16_t val){
-    
-    switch(Phase){
-        
-        case 'A':
-            PG1DC = val; //Sets Channel 1 Duty Cycle
+void setPWM_Cycle(PWM_Channel channel, uint16_t val) {
+    switch(channel){
+        case PWM_1:
+            PG1DC = val;
+            PG1STATbits.UPDREQ = 1;
             break;
-        
-        case 'B':
+        case PWM_2:
             PG2DC = val;
+            PG2STATbits.UPDREQ = 1;
             break;
-            
-        case 'C':
+        case PWM_3:
             PG3DC = val;
+            PG3STATbits.UPDREQ = 1;
             break;
-            
-        default:
-            //Maybe Report Error
-            break;        
     }
-    
 }
+
+void setPWM_Phase(PWM_Channel channel, uint16_t val) {
+    switch(channel){
+        case PWM_1:
+            PG1PHASE = val;
+            PG1STATbits.UPDREQ = 1;
+            break;
+        case PWM_2:
+            PG2PHASE = val;
+            PG2STATbits.UPDREQ = 1;
+            break;
+        case PWM_3:
+            PG3PHASE = val;
+            PG3STATbits.UPDREQ = 1;
+            break;
+    }
+}
+

@@ -6,19 +6,25 @@
  */
 
 #ifndef PWM_DRIVER_H
-#define	PWM_DRIVER_H
+#define PWM_DRIVER_H
 
-#ifdef	__cplusplus
+#include <stdint.h>
+
+#ifdef __cplusplus
 extern "C" {
 #endif
-    
-void setPWM_channel(char channel, uint16_t val);
 
+typedef enum {
+    PWM_1 = 1,
+    PWM_2 = 2,
+    PWM_3 = 3
+} PWM_Channel;
 
+void setPWM_Cycle(PWM_Channel channel, uint16_t val);
+void setPWM_Phase(PWM_Channel channel, uint16_t val);
 
-#ifdef	__cplusplus
+#ifdef __cplusplus
 }
 #endif
 
-#endif	/* PWM_DRIVER_H */
-
+#endif /* PWM_DRIVER_H */
