@@ -33,7 +33,7 @@
 
 //Header/Custom Files
 #include "vfd_Control_Loop.h"
-
+#include "../CapstoneFirmware256.X/spi_client.h" //Fix Path for Other Processor
 
 /* PIN MAPPING FOR dsPIC33CK1024MP710 && dsPIC33CK256MP508
  * ---|-------------|------------------|------------------|-----------------------------------------*
@@ -102,18 +102,44 @@
  *    
  */
 
-
+/* Host SPI Pins
+ 
+ */
 int main(void)
 {
     SYSTEM_Initialize();
     vfd_Init();
+    SPI_Client_Initialize();
     
 
-    while(1)
-    {
+    //Testing Code
+    SPI_Master_Init();
+    printf("\r\nSPI Host/Client Test Start\r\n");
 
+    uint8_t freq_cmd[2] = {0x01, 0x32}; // Frequency = 50
+    uint8_t on_cmd[2]   = {0x02, 0x01}; // Turn ON
+
+    while(1) //Will Be Changing Logic Later
+     {
+        // Send frequency command
+        SPI_Master_SendCommand(freq_cmd, 2);
+
+        // Let client task parse received bytes
+        SPI_Client_Task();
+
+        __delay_ms(1000);
+
+        // Send ON command
+        SPI_Master_SendCommand(on_cmd, 2);
+
+        SPI_Client_Task();
+
+        __delay_ms(2000);
+    }
         
 
-    }
+    
     return 0;    
 }
+
+

@@ -13,6 +13,7 @@ extern "C" {
 #endif
 
 #include <xc.h>
+#include "mcc_generated_files/pwm_hs/pwm.h"
 #include "pwm_driver.h"     // must come BEFORE pwm_control functions
 #include "pwm_Lookup.h"
 #include <stdint.h>
@@ -34,9 +35,8 @@ void vfd_SetDirection(Direction direct);
 // Called periodically (e.g., in interrupt) to update the control loop
 void vfd_Update(float newFreq);
 
-void MyPWMInterrupt(void);
+void MyPWMInterrupt(enum PWM_GENERATOR genNum);
 
-void sendDebugSample(uint8_t pin_state, uint16_t dutyA, uint16_t dutyB, uint16_t dutyC);
 
 
 #ifdef	__cplusplus

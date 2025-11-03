@@ -2,20 +2,20 @@
 #include "vfd_Control_Loop.h"
 #include <stdint.h>
 
+
 // {index, stepSize, direction}
-static PWM_State pwm_A = {0,.08,1};                      // 0   phase shift
-static PWM_State pwm_B = {table_Size / 3, .08, 1};       // 120 phase shift
-static PWM_State pwm_C = {2 * table_Size / 3, .08, 1};   // 240 Phase shift
+static PWM_State my_pwm_A = {0,.08,1};                      // 0   phase shift
+static PWM_State my_pwm_B = {table_Size / 3, .08, 1};       // 120 phase shift
+static PWM_State my_pwm_C = {2 * table_Size / 3, .08, 1};   // 240 Phase shift
 
 void vfd_Init(void)
 {
     init_sine_table();
     
     //PWM Set to 5 Hz
-    float initialFreq = 5.0f;
+    float initialFreq = 50.0f;
     vfd_SetFrequency(initialFreq); //Also Sets StepSize
-    
-    
+    setPWM_Cycle(1, 1);
     
     // Configure RD7 as digital output
     TEST_PIN_TRIS = 0;
@@ -32,7 +32,7 @@ void vfd_Init(void)
     PG1CONLbits.ON = 1;
     PG2CONLbits.ON = 1;
     PG3CONLbits.ON = 1;
-
+    
     // Enable global interrupts
     __builtin_enable_interrupts();
 }
@@ -44,15 +44,15 @@ void vfd_setDutyCycle(float percent){
 
 //Frequency Control Logic
 void vfd_SetFrequency(float freq){
-    pwm_UpdateFreq(&pwm_A,freq);
-    pwm_UpdateFreq(&pwm_B,freq);
-    pwm_UpdateFreq(&pwm_C,freq);
+    pwm_UpdateFreq(&my_pwm_A,freq);
+    pwm_UpdateFreq(&my_pwm_B,freq);
+    pwm_UpdateFreq(&my_pwm_C,freq);
 }
 
 void vfd_SetDirection(Direction direct){
-    pwm_A.direction = direct;
-    pwm_B.direction = direct;
-    pwm_C.direction = direct;
+    my_pwm_A.direction = direct;
+    my_pwm_B.direction = direct;
+    my_pwm_C.direction = direct;
 }
 
 float Freq = 1;
@@ -67,13 +67,13 @@ void vfd_Update(float newFreq){
 }
 
 //Interrupt Logic for updating Duty Cycle
-static float index_acc = 0.0f;
 
-void MyPWMInterrupt(void)
+void MyPWMInterrupt(enum PWM_GENERATOR genNum)
 {
-    uint16_t dutyA = pwm_NextVal(&pwm_A);
-    uint16_t dutyB = pwm_NextVal(&pwm_B);
-    uint16_t dutyC = pwm_NextVal(&pwm_C);
+    
+    uint16_t dutyA = pwm_NextVal(&my_pwm_A);
+    uint16_t dutyB = pwm_NextVal(&my_pwm_B);
+    uint16_t dutyC = pwm_NextVal(&my_pwm_C);
 
     // Update PWM registers
     setPWM_Cycle(1, dutyA);
@@ -81,11 +81,11 @@ void MyPWMInterrupt(void)
     setPWM_Cycle(3, dutyC);
 
     // Increment cycle counter
-    index_acc += 0.08f;               // advance by stepSize
-    if (index_acc >= table_Size) {
-        index_acc -= table_Size;      // wrap around
+    
         TEST_PIN_LAT ^= 1;            // LED toggles once per sine period
-    }
+        
+        
+        IFS4bits.PWM1IF = 0; 
 }
 
 

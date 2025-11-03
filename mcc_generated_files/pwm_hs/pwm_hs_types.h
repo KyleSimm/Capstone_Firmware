@@ -15,7 +15,7 @@
 */
 
 /*
-© [2025] Microchip Technology Inc. and its subsidiaries.
+ï¿½ [2025] Microchip Technology Inc. and its subsidiaries.
 
     Subject to your compliance with these terms, you may use Microchip 
     software and any derivatives exclusively with Microchip products. 
@@ -54,7 +54,7 @@ enum PWM_GENERATOR
 {
     PWM_1 =  1,       /**< Custom name of PWM generator 1 */
     PWM_2 =  2,       /**< Custom name of PWM generator 2 */
-    PWM_3 =  3,       /**< Custom name of PWM generator 3 */
+    PWM_GENERATOR_3 =  3,       /**< Custom name of PWM generator 3 */
     PWM_MAX_GENERATOR
 };
 

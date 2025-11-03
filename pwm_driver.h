@@ -15,9 +15,9 @@ extern "C" {
 #endif
 
 typedef enum {
-    PWM_1 = 1,
-    PWM_2 = 2,
-    PWM_3 = 3
+    my_PWM_1 = 1,
+    my_PWM_2 = 2,
+    my_PWM_3 = 3
 } PWM_Channel;
 
 void setPWM_Cycle(PWM_Channel channel, uint16_t val);
